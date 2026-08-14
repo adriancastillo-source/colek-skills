@@ -22,7 +22,6 @@ Fuente: Google Cloud Blog — "Ultimate prompting guide for Veo 3.1" (2025-10-15
 - **Diálogo:** entre comillas — `A woman says, "We have to leave now."` Lip-sync automático.
 - **Referencias:** SIN sintaxis `@` — "ingredients to video" sube imágenes y el prompt las alude en lenguaje natural: *"Using the provided images for the detective and the office setting, create a medium shot of…"*. First/last frame: dos imágenes + prompt del movimiento entre ambas. Flujo oficial recomendado: generar las referencias con la familia Gemini de imagen (Nano Banana).
 - **Negativos: exclusión DESCRIPTIVA, no "no X":** oficial — *"a desolate landscape with no buildings or roads"* mejor que *"no man-made structures"*.
-- **Parámetros:** 4, 6 u 8 s; 720p/1080p; 16:9 y 9:16 (el 1:1 que circula es workaround de comunidad).
 
 ## Plantilla
 
@@ -39,6 +38,11 @@ Ambient noise: [cama sonora]. SFX: [efectos]. [descripción de música | sin mú
 
 [Con refs:] Using the provided images for [X] and [Y], create [shot].
 ```
+
+## Parámetros
+
+- Duración: 4, 6 u 8 s por clip (tope duro).
+- Resolución: 720p / 1080p. Aspect ratios: 16:9 y 9:16 (el 1:1 que circula es workaround de comunidad, no oficial).
 
 ## Gotchas documentados
 

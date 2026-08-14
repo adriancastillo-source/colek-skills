@@ -12,6 +12,8 @@ status: vigente
 
 Higgsfield NO es un modelo: es un **agregador multi-modelo** (15+ bajo una suscripción) con capa propia de producto (presets de cámara, Cinema Studio, Soul ID, Popcorn) y modelo propio solo en imagen (Soul 2.0). **Consecuencia rectora: la sintaxis del prompt es la del MODELO subyacente elegido** — usar la ficha de ese modelo (`ficha-seedance.md`, `ficha-kling.md`, `ficha-veo.md`) para redactar, y ESTA ficha para las reglas de la plataforma. Elegirlo cuando se trabaja en su UI (el caso de los editores); no aplica si se llama al modelo por API directa.
 
+> **Versiones dentro del agregador ≠ versiones de API.** A 2026-08 Higgsfield ofrece **Seedance 2.0** (no 2.5): de `ficha-seedance.md` aplican los brackets `()<>{}【】` y las @refs (gramática 2.0), pero NO los timestamps ni las tomas de 30 s (eso es 2.5). Regla general: **verificar la versión visible en la UI de Higgsfield antes de usar rasgos exclusivos de una versión** — el agregador va detrás de las APIs.
+
 ## Gramática oficial (reglas de plataforma)
 
 Fuentes: higgsfield.ai/sora-2-prompt-guide + higgsfield.ai/blog/cinema-studio-3.0 + help center Soul ID/Popcorn (consultadas 2026-08-13). Reglas de oficio adaptadas de la skill MIT `OSideMedia/higgsfield-ai-prompt-skill` (v3.31, ago-2026) — atribución abajo.
@@ -42,8 +44,7 @@ Seedance 2.0 = multi-shot/ads · Veo 3.1 = exteriores/atmósfera · Kling 3.0 = 
 
 ## Gotchas documentados
 
-- **La pata Sora 2 tiene fecha de caducidad:** OpenAI descontinuó Sora (API muere 2026-09-24) — no montar flujos sobre ella.
-- Créditos expiran a 90 días, sin rollover; costo variable por resolución/modelo (720p ≈ 1-1.5 créditos/seg). El rendimiento real incluye **3-5 reintentos por pieza** — presupuestar con eso.
+- **La pata Sora 2 tiene fecha de caducidad:** OpenAI descontinuó Sora en 2026 (anuncio de OpenAI; cierre de API reportado para sep-2026 — verificar antes de montar cualquier flujo sobre ella).
 - Lip-sync imperfecto en habla rápida (heredado del modelo subyacente).
 - Licenciamiento comercial **ambiguo** para likenesses humanos generados — precaución en trabajo de cliente.
 - Sin Soul ID no hay identidad persistente de personaje entre sesiones.
@@ -51,7 +52,7 @@ Seedance 2.0 = multi-shot/ads · Veo 3.1 = exteriores/atmósfera · Kling 3.0 = 
 ## Folklore de comunidad
 
 - "Preset en UI + movimiento repetido en texto" — `reproducible` (cheat sheet Memons + reviews 2026; consistente con la doc oficial).
-- Los gotchas de créditos/reintentos — `anecdótico` (reviews 2026, sin doc oficial de Higgsfield que los confirme).
+- Créditos: expiran a 90 días sin rollover, 720p ≈ 1-1.5 créditos/seg, y el rendimiento real incluye 3-5 reintentos por pieza — `anecdótico` (reviews 2026, sin doc oficial de Higgsfield que lo confirme); presupuestar con margen.
 
 ## Iteración
 

@@ -16,13 +16,18 @@ foreach ($s in $skills) {
 
     Copy-Item (Join-Path $src "$s\portable\SKILL.md") (Join-Path $dst "SKILL.md")
     Copy-Item (Join-Path $src "$s\references\*.md") (Join-Path $dst "references\")
+    # docs internos de mantenimiento no viajan a los editores
+    Remove-Item (Join-Path $dst "references\metodo-ficha.md") -ErrorAction SilentlyContinue
 
-    # ZIP para usuarios de claude.ai (la carpeta de la skill en la raiz del zip)
+    # ZIP para usuarios de claude.ai (carpeta de la skill en la raiz del zip).
+    # tar de Windows (bsdtar) y no Compress-Archive: PS 5.1 mete backslashes en los
+    # entry names y los extractores POSIX (claude.ai) extraen plano.
     $zipdir = Join-Path $repo "zips"
     New-Item -ItemType Directory -Force $zipdir | Out-Null
     $zip = Join-Path $zipdir "$s.zip"
     if (Test-Path $zip) { Remove-Item -Force $zip }
-    Compress-Archive -Path $dst -DestinationPath $zip
+    tar -a -c -f $zip -C (Join-Path $repo "skills") $s
+    if ($LASTEXITCODE -ne 0) { throw "tar fallo para $s" }
 }
 
 Write-Host "Build OK: $($skills.Count) skills regeneradas en skills\ y zips\"

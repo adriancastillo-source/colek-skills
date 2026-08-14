@@ -5,6 +5,10 @@ rem Correr con doble clic desde la carpeta del repo descargado.
 set "DEST=%USERPROFILE%\.claude\skills"
 if not exist "%DEST%" mkdir "%DEST%"
 
+rem borrar la version anterior para que no queden archivos obsoletos instalados
+if exist "%DEST%\media-prompting" rmdir /S /Q "%DEST%\media-prompting"
+if exist "%DEST%\image-character-sheet" rmdir /S /Q "%DEST%\image-character-sheet"
+
 xcopy /E /I /Y "%~dp0skills\media-prompting" "%DEST%\media-prompting" >nul
 xcopy /E /I /Y "%~dp0skills\image-character-sheet" "%DEST%\image-character-sheet" >nul
 

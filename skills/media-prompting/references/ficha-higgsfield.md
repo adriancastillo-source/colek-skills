@@ -12,7 +12,25 @@ status: vigente
 
 Higgsfield NO es un modelo: es un **agregador multi-modelo** (15+ bajo una suscripción) con capa propia de producto (presets de cámara, Cinema Studio, Soul ID, Popcorn) y modelo propio solo en imagen (Soul 2.0). **Consecuencia rectora: la sintaxis del prompt es la del MODELO subyacente elegido** — usar la ficha de ese modelo (`ficha-seedance.md`, `ficha-kling.md`, `ficha-veo.md`) para redactar, y ESTA ficha para las reglas de la plataforma. Elegirlo cuando se trabaja en su UI (el caso de los editores); no aplica si se llama al modelo por API directa.
 
-> **Versiones dentro del agregador ≠ versiones de API.** A 2026-08 Higgsfield ofrece **Seedance 2.0** (no 2.5): de `ficha-seedance.md` aplican los brackets `()<>{}【】` y las @refs (gramática 2.0), pero NO los timestamps ni las tomas de 30 s (eso es 2.5). Regla general: **verificar la versión visible en la UI de Higgsfield antes de usar rasgos exclusivos de una versión** — el agregador va detrás de las APIs.
+> **Versiones dentro del agregador ≠ versiones de API.** Regla general: **verificar la versión
+> visible en la UI antes de usar rasgos exclusivos de una versión** — el agregador puede ir detrás
+> de las APIs. *(Corrección 2026-08-13: la UI y el MCP ya sirven **Seedance 2.5** — verificado en la
+> cuenta de Adrian, torneo Foliatti; una versión anterior de esta ficha decía que solo había 2.0.)*
+
+## MCP (verificado en cuenta propia, 2026-08-13)
+
+- **Conexión:** conector custom de claude.ai → `https://mcp.higgsfield.ai/mcp` (OAuth con la cuenta;
+  campos Client ID/Secret se dejan vacíos). Consume **los créditos del plan** — mismo pool que la UI.
+- **Flujo de generación:** `media_upload` (URL prefirmada → PUT bytes → `media_confirm`) →
+  `generate_video` con `medias:[{role:'start_image', value:media_id}]`. `get_cost:true` da el precio
+  en créditos SIN generar — usarlo siempre antes de disparar.
+- ⚠️ **La plataforma empuja sus presets:** `generate_video` puede responder con una "recomendación"
+  de preset propio en lugar de generar (nos ofreció "IN THE DARK" para una escena cálida de casino).
+  Para generar literal: reintentar con `declined_preset_id: <id del preset ofrecido>`.
+- **Lo que el MCP NO expone** (a 2026-08): el **Lip-Sync Studio** (Speak v2, InfiniteTalk, lipsync-2)
+  — solo generadores de imagen/video/audio TTS. Lipsync audio-driven → por fal.
+- **Costo medido:** Kling 3.0 std 15 s con audio = 30 créditos (~2 cr/s); el $/crédito depende del
+  plan (pack top-up ≈ $0.0525/cr). El gasto NO deja rastro en ledgers propios — registrarlo a mano.
 
 ## Gramática oficial (reglas de plataforma)
 

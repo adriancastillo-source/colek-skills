@@ -54,6 +54,25 @@ Shot 3 ([n]s): [framing], [resolution beat]. Audio: [score/ambience].
 - Con video de referencia: tope de Elements baja a 4 y el audio nativo NO funciona sobre video de input (oficial Omni).
 - Cámara vaga ("cinematic movement") da resultados inconsistentes — nombrar framing + movimiento + ritmo.
 
+## Verificado con gasto propio (torneo Foliatti, 2026-08-13)
+
+- **Diálogo nativo en español es-MX: NO confiable** (2/2 corridas de 15 s, vía Higgsfield):
+  deformó nombres propios ("Don Fortuno" → "Funutro" / "Fortunino"), rompió una línea completa en
+  papilla fonética, añadió interjecciones no escritas ("¡Oh!") y **adoptó acento con mezcla italiana**
+  (veredicto de Adrian). Descartado para diálogo es-MX de serie; posible combo video-Kling +
+  voice-swap en post (sin medir). — `reproducible (2 corridas)`.
+- **Shot-list multi-shot SÍ la obedece** (formato oficial `Shot N (ns):`): CU/OTS/two-shot y
+  apertura con llegada de personaje, correctos en ambas corridas. El problema es el audio, no la
+  puesta en escena. — `reproducible`.
+- **Deforma proporciones del personaje** aun partiendo de start_image: engordó al personaje robusto
+  más allá de su diseño (veredicto de Adrian contra el character sheet, corrida 2). En apego a
+  referencias de personaje, Seedance 2.5 le ganó con claridad en el mismo caso. — `reproducible
+  (consistente con el "morphing object problem" del folklore fal)`.
+- **Audio sucio:** risas tipo estudio colgadas al inicio en corrida 1 pese a pedir solo ambiente
+  (los negativos in-prompt no tienen respaldo oficial en Kling — ver Gramática). — `anecdótico`.
+- **Precio real vía Higgsfield:** 15 s std 16:9 con audio = **30 créditos** (~$1.58 al pack top-up)
+  ≈ 2 cr/s. — `medido`.
+
 ## Folklore de comunidad
 
 - Énfasis `++elemento++`, negativos in-prompt ("No people, no text overlays"), lentes virtuales ("24mm f/2.8") — `anecdótico`: vienen de fal.ai (guía 2.6 Pro), NO están en docs oficiales.

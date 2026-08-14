@@ -50,6 +50,21 @@ Style: [estilo visual, grade]. No subtitles. [No BGM / (music: …)]. Do not gen
 - Continuación de video: máx 3 clips / 15 s combinados (guía 2.0).
 - Storyboards multi-panel: ≤15 paneles, line-art simple; la alineación no es estricta (alineación dura → keyframes).
 
+## Verificado con gasto propio (torneo Foliatti, 2026-08-13)
+
+- **La gramática oficial PAGA — A/B medido:** misma escena/refs/motor, solo cambió la sintaxis. Con
+  la capa de fal (comillas + "0-3 seconds:" + "NO music" casero): música orquestal colada TODO el
+  clip y marca deformada ("Folletti"). Con esta ficha (`{ }`, negativos oficiales): limpio y "Foliati".
+  El negativo que funciona es literal: `No BGM; generate only environmental sounds`. — `reproducible`.
+- **Shot-list por timestamps: obediencia real** (2 corridas, 6-7 shots c/u): CU/OTS/two-shot cortados
+  donde se prescribió, apertura con acción previa al diálogo (personaje B entrando a cuadro) también
+  obedecida. Español es-MX: 6/6 líneas palabra×palabra en ambas corridas. — `reproducible`.
+- **`@Audio` como referencia RE-ACTÚA, no sincroniza** (medido con envolvente: r=0.32 vs r>0.7 de
+  passthrough): toma el texto y aproxima el timbre, pero re-genera fraseo y pausas. Sirve para fijar
+  QUÉ dice; NO para fijar la voz de un personaje de serie. — `reproducible`.
+- **Precio real en fal** (`bytedance/seedance-2.5/reference-to-video`, 720p/16:9): **$0.4623/s** por
+  delta de saldo — 54% arriba del precio de 2.0 std. — `medido`.
+
 ## Folklore de comunidad
 
 - Umbral de 2-3 foley concretos por prompt y el tope de 8 sujetos como cifra — `anecdótico` (Segmind, "testing" propio, feb-2026).

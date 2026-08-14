@@ -1,69 +1,65 @@
 ---
 herramienta: InfiniteTalk (MeiGen-AI)
-modelo-vigente: InfiniteTalk sobre Wan2.1-I2V-14B-480P; en fal el slug es `infinitalk` (sin segunda "e"), en wavespeed `infinitetalk`
+modelo-vigente: InfiniteTalk (pesos abiertos, NeurIPS 2025; servido en fal como `fal-ai/infinitalk` — sin la segunda "e")
 dominio: video
-updated: 2026-08-13
-status: vigente
+updated: 2026-08-14
+status: descartado-colek
 ---
 
-# Ficha: InfiniteTalk (talking head / video dubbing audio-driven)
+# Ficha: InfiniteTalk
+
+> **Status: descartado-colek (2026-08-14, torneo Foliatti).** En su prueba justa (plano medio, caras grandes, pista TTS expresiva propia, 18.6 s) el veredicto humano fue lapidario: *"pésimo comparado contra Seedance o incluso vs Kling; no es opción aplicable en nada"*. Su única ventaja real —passthrough perfecto del audio— no compensa la calidad de animación. La ficha se conserva por si el modelo mejora (pesos abiertos, itera rápido) — re-evaluar solo con versión nueva, no re-probar esta.
 
 ## Identidad
 
-Framework de **sparse-frame video dubbing**: sincroniza labios, cabeza, cuerpo y expresiones con un AUDIO dado. Variantes: **I2V** (imagen + audio → presentador hablando), **V2V** (video + audio → re-doblaje), single/multi-persona, y `single-text` en fal (texto + voz TTS integrada). Elegirlo para: presentador/avatar hablando a cámara desde una foto, o re-doblar un video existente. **Regla rectora: aquí el prompt es SECUNDARIO — el audio manda** (y en V2V, la cámara la manda el video fuente). No elegirlo para escenas de acción o cámara dirigida por texto.
+Modelo **audio-driven** de MeiGen-AI (pesos abiertos, base Wan2.1-I2V-14B-480P): recibe UNA imagen + UNA pista de audio y anima al/los personajes hablando esa pista **TAL CUAL** — no re-genera la voz (a diferencia de Seedance/Kling/Veo, que re-actúan todo audio de entrada). Elegirlo cuando **la voz y la interpretación ya existen y son intocables** (TTS de personaje, locutor real): apego al guion 100% por construcción. No compite en puesta en escena: **anima el cuadro que le des, sin cortes de plano** — los planos los pone la edición.
 
-## Gramática oficial
+⚠️ **Nombre secuestrado por clones SEO:** `infinitetalk.net` y similares NO son el modelo — venden otro servicio detrás del nombre. Un modelo open-weights se usa en su endpoint de proveedor (fal, WaveSpeed, Replicate), nunca en el dominio homónimo.
 
-Fuentes: README github.com/MeiGen-AI/InfiniteTalk + fal.ai/models/fal-ai/infinitalk/api (+ /video-to-video, /single-text) + wavespeed.ai/docs/docs-api/wavespeed-ai/infinitetalk. Consultadas 2026-08-13.
+## Gramática oficial (contrato del endpoint + README)
 
-- **El prompt de texto es condicionamiento de escena, no de sync:** describe "scene, pose, or behavior" (wavespeed). **Corto y en inglés** — la doc de wavespeed advierte literal que prompts largos o en otro idioma producen "analysis errors, resulting in noisy and unexpected videos". Ejemplo del playground de fal: `"A woman with colorful hair talking on a podcast."` La restricción de inglés aplica al PROMPT; el audio puede ser en español (el dubbing multilingüe es use case anunciado).
-- **Sin negative prompt** en los providers.
-- **Inputs:** `image_url` (I2V) o `video_url` (V2V) + `audio_url` (mp3/ogg/wav/m4a/aac) + `prompt`. Imagen con aspect ratio distinto al output → **resize + center crop automático** (encuadres descentrados pierden al sujeto).
-- **Truco oficial para >1 min:** I2V se degrada (~1 min, color shift progresivo); el README recomienda convertir la imagen en un video con paneo/zoom lento y usar **V2V**, que sí es "unlimited".
-- **Multi-persona (wavespeed `/multi`):** imagen con ambas personas + audio por lado + orden de habla (left-to-right / right-to-left / simultáneo).
+Fuentes: fal.ai/models/fal-ai/infinitalk/api (schema) + github.com/MeiGen-AI/InfiniteTalk (README). Consultadas 2026-08-13.
 
-## Plantilla (I2V "presentador a cámara")
+- **Inputs:** `image_url` (obligatorio) · `audio_url` (obligatorio; mp3/ogg/wav/m4a/aac) · `prompt` (texto que guía el MOVIMIENTO, no el habla) · `num_frames` (41–721; default 145) · `resolution` (480p/720p — no hay más) · `seed` · `acceleration` (none/regular/high).
+- **El prompt NO lleva diálogo** — el habla ES el audio. El prompt describe: quiénes están en cuadro, quién habla en qué orden, gestos y reacciones del que escucha. Corto y en inglés (la doc de WaveSpeed advierte que prompts largos o en otro idioma ensucian el resultado). El audio sí puede ser en español.
+- **Imagen con aspect ratio distinto al output → resize + center crop automático** — sujeto centrado o se pierde.
+- **Variantes:** video-to-video (re-anima un video existente; imita la cámara del fuente "aunque no idénticamente" — README) · single-text (TTS interno) · multi (`first_audio_url` + `second_audio_url`, orden de habla configurable) — pero multi está **capada a 81–129 frames (~3–5 s)** y factura 1.25× sobre 81.
+- **Trucos oficiales del README:** I2V se degrada tras ~1 min (color shift progresivo) → convertir la imagen en video con paneo/zoom lento y usar V2V (ese sí "unlimited"). Lip-sync flojo → subir audio CFG 3–5 (NO expuesto en fal/WaveSpeed: ahí la única palanca es mejorar el audio).
 
-Prompt de 1-2 frases, inglés, sin listas de estilo ni negativos:
+## Plantilla
 
 ```
-[SUBJECT: presenter, edad/look breve] speaks [energía: confidently/calmly/enthusiastically] to the camera, [gesto/expresión: subtle hand gestures, warm expression], [escena breve: modern studio background, soft lighting].
+[N characters] at [setting], having a conversation, taking turns speaking.
+The [descripción del personaje 1, posición] speaks first, then the [personaje 2, posición] replies,
+alternating naturally. Subtle head movements and gestures while each one talks;
+the listener reacts quietly.
 ```
 
-Preparación de inputs (pesa más que el prompt):
-- **Imagen:** frontal o 3/4, boca visible y bien iluminada, alta resolución, sujeto centrado, ya en el aspect ratio destino (16:9 o 9:16).
-- **Audio:** limpio, sin música pesada de fondo, ritmo natural (no acelerado); duración ≤ `num_frames`/~25 s.
+Parámetros: `num_frames = floor(duración_audio × 25) − 2` · `resolution: 720p` para entregar. Imagen frontal/3-4, boca visible, ya en el ratio destino; audio limpio a ritmo natural.
 
-## Parámetros (fal `infinitalk`)
+## Parámetros
 
-- `num_frames`: 41-721 en I2V (default 145 ≈ ~5.8 s); 81-129 en V2V (>81 factura 1.25x).
-- `resolution`: `480p` (default) / `720p` — no hay más.
-- `acceleration`: `none` (máxima calidad) / `regular` (default) / `high`.
-- `seed` (default 42) — fijarlo para reproducibilidad.
-- No exponen fps (~25 fps por la familia Wan-audio — cifra no-oficial, estimarla así) ni CFG de audio.
-- **Costo:** fal ≈ $0.20/s (720p x2, página del playground); **wavespeed mucho más barato**: $0.03/s (480p) / $0.06/s (720p), mín 5 s, tope 600 s, y ofrece `mask_image` (región a animar).
+- 41–721 frames (~1.6–28.8 s @25fps) por toma en el endpoint estándar de fal.
+- Precio fal: ~$0.2/s base, 720p ×2 → **~$0.41/s medido** (con ±$1.2 de ambigüedad en la corrida).
 
-## Gotchas documentados
+## Gotchas documentados (verificados con gasto propio, torneo Foliatti 2026-08-13)
 
-- **Lip-sync flojo → el fix oficial es subir el audio CFG (3-5)**, pero los providers NO lo exponen: en fal/wavespeed la única palanca es mejorar el audio (limpio, más lento).
-- I2V >1 min: color shift (usar el truco imagen→video + V2V).
-- V2V imita la cámara del video fuente "aunque no idénticamente" (README).
-- Audio más largo que `num_frames` → se corta al tope de frames.
-- wavespeed: `mask_image` con la imagen completa puede devolver video **negro** — la máscara es para regiones parciales.
-- Center-crop automático: verificar el encuadre del sujeto antes de gastar.
+- **`num_frames` vs duración es ESTRICTO:** el endpoint exige audio ≥ num_frames/25 con decimales; redondear al frame exacto rebota 422 ("Audio is too short"). Restar 2 frames al cálculo.
+- **Es LENTO:** ~440 frames tardan >15 min (difusión frame a frame). Poll con timeout ≥45 min, o el cliente muere con el job vivo en fal (rescatable por `request_id`).
+- **Passthrough de audio verificado:** correlación de envolvente r=1.000, desfase 0 ms — la pista sale intacta, con las pausas e interpretación originales.
+- **Dos personajes en un cuadro con pista combinada: funciona** — anima a ambos alternando con el turno del audio (una imagen con los 2, pista con las voces intercaladas). La variante multi formal no hace falta para escenas cortas… y por su tope de frames tampoco alcanza.
 
 ## Folklore de comunidad
 
-(Capa más débil que la oficial en este modelo — blogs de comunidad, sin hilos de Reddit sustantivos localizados; consultados 2026-08-13.)
-
-- Especificar emoción + acción concreta (`"speaks enthusiastically, gesturing with both hands"`), anclar orientación (`"turns slightly toward the camera with a warm smile"`), y si la cara sale rígida añadir `micro-expressions, subtle head turns` — `anecdótico` (infinitetalk.net, runcomfy).
-- Emparejar energía del prompt con la del audio (voz calmada → `"speaks quietly and thoughtfully"`) — `anecdótico`, pero coherente con que el audio manda.
-- Sujeto frontal + iluminación consistente + fuente de alta resolución mejoran el sync — `anecdótico` (tutoriales ComfyUI), coherente con la doc.
+- WaveSpeed lo sirve ~10× más barato ($0.03–0.06/s) — `sin verificar` (precios secundarios 2026-08-13); si el volumen crece, medir ahí antes de asumir.
+- "Hasta 10 min por clip" — es de la variante/serving largo de WaveSpeed, NO del endpoint fal (tope 721 frames) — no confundir capa.
+- Emparejar la energía del prompt con la del audio y añadir `micro-expressions, subtle head turns` si la cara sale rígida — `anecdótico` (blogs de comunidad; ojo: varios son los clones SEO del punto de Identidad).
 
 ## Iteración
 
-Con `seed` fijo, cambiar UNA cosa por ronda — y antes de tocar el prompt, revisar los inputs: la mayoría de los defectos (sync, rigidez, encuadre) se corrigen en el audio o la imagen fuente, no en el texto. Piezas >30 s: partir el audio en cortes o usar wavespeed (hasta 10 min).
+La voz no se itera aquí (es input). Iterar = cambiar imagen de entrada (pose, encuadre, boca entreabierta) o el prompt de movimiento. Un cambio por ronda.
 
 ## Historial
 
-- 2026-08-13 — alta de la ficha (para el torneo InfiniteTalk + Seedance 2.5).
+- 2026-08-13 — alta de la ficha (torneo Foliatti R1; runner operativo en el motor de video interno).
+- 2026-08-14 — **status → descartado-colek** tras la prueba justa del torneo (ver encabezado). Consolidada con la ficha hermana `ficha-infinitalk.md` (slug de fal) en este único archivo.

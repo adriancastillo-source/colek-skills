@@ -34,6 +34,6 @@ Cada modelo de IA tiene gramática propia: un prompt escrito "en general" desper
 | `ficha-seedance.md` | Seedance 2.x (ByteDance) | video |
 | `ficha-kling.md` | Kling 2.x/3 (Kuaishou) | video |
 | `ficha-veo.md` | Veo 3.x (Google) | video |
-| `ficha-infinitetalk.md` | InfiniteTalk (talking head / dubbing audio-driven) | video |
+| `ficha-infinitetalk.md` | InfiniteTalk (talking head audio-driven) — **descartado tras prueba de Colek 2026-08-14**, ver ficha | video |
 
 Para hojas de personaje multi-vista (character sheets), usar la skill hermana `image-character-sheet`.

@@ -1,6 +1,6 @@
 ---
 name: media-prompting
-description: Experto en prompting de contenido generativo (imagen + video) — dado un requerimiento, emite el prompt optimizado para la herramienta concreta que lo va a ejecutar, usando la ficha de sintaxis de ESA herramienta. Usar cuando el usuario pida "un prompt para [Higgsfield/Seedance/Kling/Veo/GPT Image/Nano Banana/ChatGPT/Gemini]", "ayúdame a promptear este video/imagen", o pida generar un asset visual con IA y haga falta redactar el prompt. NO ejecuta la generación — entrega el prompt listo para pegar en la herramienta.
+description: Experto en prompting de contenido generativo (imagen + video) — dado un requerimiento, emite el prompt optimizado para la herramienta concreta que lo va a ejecutar, usando la ficha de sintaxis de ESA herramienta. Usar cuando el usuario pida "un prompt para [Higgsfield/Seedance/Kling/Veo/InfiniteTalk/GPT Image/Nano Banana/ChatGPT/Gemini]", "ayúdame a promptear este video/imagen", o pida generar un asset visual con IA y haga falta redactar el prompt. NO ejecuta la generación — entrega el prompt listo para pegar en la herramienta.
 tags: [sop, imagen, video]
 ---
 
@@ -34,5 +34,6 @@ Cada modelo de IA tiene gramática propia: un prompt escrito "en general" desper
 | `ficha-seedance.md` | Seedance 2.x (ByteDance) | video |
 | `ficha-kling.md` | Kling 2.x/3 (Kuaishou) | video |
 | `ficha-veo.md` | Veo 3.x (Google) | video |
+| `ficha-infinitetalk.md` | InfiniteTalk (talking head / dubbing audio-driven) | video |
 
 Para hojas de personaje multi-vista (character sheets), usar la skill hermana `image-character-sheet`.

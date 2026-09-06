@@ -25,10 +25,10 @@ Si el sheet en un solo tiro deriva — o para máxima consistencia desde el inic
 4. Con varias referencias, **declarar el rol de cada una**: "Image A = the character, Image B = style reference only".
 5. La edición es conversacional por turnos: cada refinamiento declara explícitamente qué se conserva. Tras ~5 ediciones, si aparecen derivas (manos, outfit reinterpretado), **regenerar el ancla**.
 
-## Ejemplo lleno (Ricky, estilo fotorreal)
+## Ejemplo lleno (un personaje recurrente, estilo fotorreal)
 
 ```
-Create a professional character reference sheet, as one single image arranged in a clean grid on a light gray seamless studio background. The character is a cheerful young Latino waiter in his mid-twenties with warm brown skin, short curly black hair, thick expressive eyebrows and a bright smile, wearing a vibrant purple button-front vest with a black "RICKY" name tag, a crisp white dress shirt with sleeves rolled to the elbows, a black bow tie, a black belt with a silver buckle, slim black dress pants and polished black cap-toe oxford shoes.
+Create a professional character reference sheet, as one single image arranged in a clean grid on a light gray seamless studio background. The character is a cheerful young Latino waiter in his mid-twenties with warm brown skin, short curly black hair, thick expressive eyebrows and a bright smile, wearing a vibrant purple button-front vest with a black "un personaje recurrente" name tag, a crisp white dress shirt with sleeves rolled to the elbows, a black bow tie, a black belt with a silver buckle, slim black dress pants and polished black cap-toe oxford shoes.
 
 The top row shows three full-body views of him standing in a relaxed neutral pose with both feet visible: front view, side view and back view. Below them sit a chest-up front close-up portrait and a top-down view seen from directly above. Along the bottom runs a strip of six detail swatches: close-ups of the vest fabric, shirt fabric, bow tie, belt buckle, shoes and name tag. Label every panel in large bold dark sans-serif capitals: "FRONT VIEW", "SIDE VIEW", "BACK VIEW", "FRONT CLOSE-UP", "TOP-DOWN VIEW", "DETAIL SWATCHES", and only that text appears in the image.
 

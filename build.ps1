@@ -20,6 +20,26 @@ foreach ($s in $skills) {
     Remove-Item (Join-Path $dst "references\metodo-ficha.md") -ErrorAction SilentlyContinue
     Remove-Item (Join-Path $dst "references\ficha-infinitalk.md") -ErrorAction SilentlyContinue
 
+    # SANITIZADO (2026-09-05). El repo destino es PUBLICO en GitHub y hasta hoy las
+    # fichas viajaban tal cual: cada medicion nueva se hizo sobre un proyecto real y
+    # con ella entraron nombres de cliente, rutas del Drive y costos por clip. Cuatro
+    # fichas ya publicadas nombraban clientes cuando se detecto.
+    # `sanitizar.py` sustituye los nombres por su categoria y ABORTA si algo sobrevive:
+    # es preferible un build detenido a un cliente publicado.
+    Write-Host "  sanitizando $s ..."
+    & python (Join-Path $repo "sanitizar.py") (Join-Path $dst "references")
+    if ($LASTEXITCODE -ne 0) {
+        throw "SANITIZADO FALLIDO en '$s': quedaron terminos internos. NO se publica nada."
+    }
+    # El SKILL.md portable pasa por el mismo filtro que sus fichas.
+    $tmpSkill = Join-Path $dst "_skillmd"
+    New-Item -ItemType Directory -Force $tmpSkill | Out-Null
+    Copy-Item (Join-Path $dst "SKILL.md") (Join-Path $tmpSkill "SKILL.md")
+    & python (Join-Path $repo "sanitizar.py") $tmpSkill
+    if ($LASTEXITCODE -ne 0) { throw "SANITIZADO FALLIDO en el SKILL.md de '$s'." }
+    Copy-Item (Join-Path $tmpSkill "SKILL.md") (Join-Path $dst "SKILL.md") -Force
+    Remove-Item -Recurse -Force $tmpSkill
+
     # ZIP para usuarios de claude.ai (carpeta de la skill en la raiz del zip).
     # tar de Windows (bsdtar) y no Compress-Archive: PS 5.1 mete backslashes en los
     # entry names y los extractores POSIX (claude.ai) extraen plano.

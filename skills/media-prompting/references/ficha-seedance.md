@@ -45,12 +45,13 @@ Style: [estilo visual, grade]. No subtitles. [No BGM / (music: …)]. Do not gen
 
 ## Gotchas documentados
 
-- Timing exacto era **inestable en 2.0** (oficial recomendaba ritmo natural); en 2.5 los timestamps SÍ son el método — no aplicar consejos 2.0 a 2.5.
+- **Rostros fotorrealistas: el rechazo es POR PUERTA, no por familia** (medido 2026-08-28, teaser Conquistando): **2.5 vía fal RECHAZA** la imagen de referencia con rostro fotorrealista (`content_policy_violation / partner_validation_failed`, 2/2) · **2.0 fast vía fal ACEPTA** (12/12 tomas del mismo día, mismos keyframes) · **2.5 vía Higgsfield ACEPTA** (MCP, modo omni_reference — pero empuja presets: reintentar con `declined_preset_id`; un job puede colgarse >10 min; su gasto no cae en ledgers propios). El plan B Kling de `kling-i2v.mjs` sigue vigente como tercera puerta.
+- Timing exacto era **inestable en 2.0** (oficial recomendaba ritmo natural); en 2.5 los timestamps SÍ son el método — no aplicar consejos 2.0 a 2.5. Corolario 2026-08-28: si un multi-shot debe correr en 2.0 (p. ej. por la puerta de rostros), partirlo en jobs single-shot y cortar en montaje.
 - Estabilidad cae con >8 sujetos; óptimo 1-5. Con 5+ sujetos, referencias de una sola vista son más estables. NO escribir nombres sobre las imágenes de referencia.
 - Continuación de video: máx 3 clips / 15 s combinados (guía 2.0).
 - Storyboards multi-panel: ≤15 paneles, line-art simple; la alineación no es estricta (alineación dura → keyframes).
 
-## Verificado con gasto propio (torneo Foliatti, 2026-08-13)
+## Verificado con gasto propio (torneo un cliente de entretenimiento, 2026-08-13)
 
 - **La gramática oficial PAGA — A/B medido:** misma escena/refs/motor, solo cambió la sintaxis. Con
   la capa de fal (comillas + "0-3 seconds:" + "NO music" casero): música orquestal colada TODO el
@@ -62,7 +63,7 @@ Style: [estilo visual, grade]. No subtitles. [No BGM / (music: …)]. Do not gen
 - **`@Audio` como referencia RE-ACTÚA, no sincroniza** (medido con envolvente: r=0.32 vs r>0.7 de
   passthrough): toma el texto y aproxima el timbre, pero re-genera fraseo y pausas. Sirve para fijar
   QUÉ dice; NO para fijar la voz de un personaje de serie. — `reproducible`.
-- **Precio real en fal** (`bytedance/seedance-2.5/reference-to-video`, 720p/16:9): **$0.4623/s** por
+- **Precio real en fal** (`bytedance/seedance-2.5/reference-to-video`, 720p/16:9): **<costo interno>** por
   delta de saldo — 54% arriba del precio de 2.0 std. — `medido`.
 
 ## Folklore de comunidad

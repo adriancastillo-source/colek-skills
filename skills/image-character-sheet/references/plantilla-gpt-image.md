@@ -31,12 +31,12 @@ CONSTRAINTS: identical character in every view — same face, eye line, nose bri
 - **Expression sheet:** `One full-body reference on the left; right side a grid of head-and-shoulders portraits, all from the same frontal angle: neutral, smiling, serious, surprised, angry, laughing. Labels under each.`
 - **Wardrobe variants:** `The same character shown full-body in [N] different outfits side by side, same pose and angle.`
 
-## Ejemplo lleno (Ricky, estilo fotorreal)
+## Ejemplo lleno (un personaje recurrente, estilo fotorreal)
 
 ```
 TASK: Professional character reference sheet, one single image, grid layout.
 
-CHARACTER (identical in every view): a cheerful young Latino waiter in his mid-twenties, warm brown skin, short curly black hair, thick expressive eyebrows, bright smile; wearing a vibrant purple button-front vest with a black "RICKY" name tag, crisp white dress shirt with sleeves rolled to the elbows, black bow tie, black belt with silver buckle, slim black dress pants, polished black cap-toe oxford shoes.
+CHARACTER (identical in every view): a cheerful young Latino waiter in his mid-twenties, warm brown skin, short curly black hair, thick expressive eyebrows, bright smile; wearing a vibrant purple button-front vest with a black "un personaje recurrente" name tag, crisp white dress shirt with sleeves rolled to the elbows, black bow tie, black belt with silver buckle, slim black dress pants, polished black cap-toe oxford shoes.
 
 VIEWS:
 - Top row, three equal panels: full-body FRONT VIEW, SIDE VIEW, BACK VIEW — standing in a relaxed neutral pose, head to toe, both feet visible.

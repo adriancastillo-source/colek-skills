@@ -41,6 +41,12 @@ CONSTRAINTS: [exclusiones y reglas duras: single subject, no watermark, no extra
 
 - Tamaños prácticos: 1536x1024 (3:2 landscape, el caballo de batalla), 1024x1536 (retrato), 2560x1440 (detalle). `quality: high` cuando hay texto o textura fina.
 - API: `model="gpt-image-2"`; tolera `size` flexible (múltiplos de 16).
+- ⚠️ **La edición con fidelidad de referencia sigue siendo de `gpt-image-1`.** `images.edit` con
+  `input_fidelity="high"` **rechaza** gpt-image-2: `400 — "The model 'gpt-image-2' does not support
+  the 'input_fidelity' parameter"` (verificado 2026-08-20). Para image-to-image con referencias hay
+  que pedir `model="gpt-image-1"`, y ahí el tamaño vuelve a la lista fija (1024x1024 / 1536x1024 /
+  1024x1536). Consecuencia de costo: high 1024x1536 = 6240 tokens de salida × <costo interno>/1M = **<costo interno>/imagen**
+  (developers.openai.com/api/docs/pricing + su guía de image generation, leídas 2026-08-20).
 
 ## Gotchas documentados
 
@@ -62,3 +68,6 @@ Un cambio por edición; re-pegar SUBJECT y CONSTRAINTS completos en cada follow-
 ## Historial
 
 - 2026-08-13 — alta de la ficha (modelo gpt-image-2).
+- 2026-08-20 — precisión en §Parámetros: `input_fidelity` no existe en gpt-image-2, así que toda
+  edición con referencia cae a gpt-image-1 (con su lista fija de tamaños y su costo real).
+  Cazado al correr el casting del avatar de un cliente de alimentos, donde el arm de GPT se pedía image-to-image.

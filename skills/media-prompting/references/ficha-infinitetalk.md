@@ -3,12 +3,12 @@ herramienta: InfiniteTalk (MeiGen-AI)
 modelo-vigente: InfiniteTalk (pesos abiertos, NeurIPS 2025; servido en fal como `fal-ai/infinitalk` — sin la segunda "e")
 dominio: video
 updated: 2026-08-14
-status: descartado-colek
+status: descartado-el estudio
 ---
 
 # Ficha: InfiniteTalk
 
-> **Status: descartado-colek (2026-08-14, torneo Foliatti).** En su prueba justa (plano medio, caras grandes, pista TTS expresiva propia, 18.6 s) el veredicto humano fue lapidario: *"pésimo comparado contra Seedance o incluso vs Kling; no es opción aplicable en nada"*. Su única ventaja real —passthrough perfecto del audio— no compensa la calidad de animación. La ficha se conserva por si el modelo mejora (pesos abiertos, itera rápido) — re-evaluar solo con versión nueva, no re-probar esta.
+> **Status: descartado-el estudio (2026-08-14, torneo un cliente de entretenimiento).** En su prueba justa (plano medio, caras grandes, pista TTS expresiva propia, 18.6 s) el veredicto humano fue lapidario: *"pésimo comparado contra Seedance o incluso vs Kling; no es opción aplicable en nada"*. Su única ventaja real —passthrough perfecto del audio— no compensa la calidad de animación. La ficha se conserva por si el modelo mejora (pesos abiertos, itera rápido) — re-evaluar solo con versión nueva, no re-probar esta.
 
 ## Identidad
 
@@ -40,9 +40,9 @@ Parámetros: `num_frames = floor(duración_audio × 25) − 2` · `resolution: 7
 ## Parámetros
 
 - 41–721 frames (~1.6–28.8 s @25fps) por toma en el endpoint estándar de fal.
-- Precio fal: ~$0.2/s base, 720p ×2 → **~$0.41/s medido** (con ±$1.2 de ambigüedad en la corrida).
+- Precio fal: ~<costo interno> base, 720p ×2 → **~<costo interno> medido** (con ±<costo interno> de ambigüedad en la corrida).
 
-## Gotchas documentados (verificados con gasto propio, torneo Foliatti 2026-08-13)
+## Gotchas documentados (verificados con gasto propio, torneo un cliente de entretenimiento 2026-08-13)
 
 - **`num_frames` vs duración es ESTRICTO:** el endpoint exige audio ≥ num_frames/25 con decimales; redondear al frame exacto rebota 422 ("Audio is too short"). Restar 2 frames al cálculo.
 - **Es LENTO:** ~440 frames tardan >15 min (difusión frame a frame). Poll con timeout ≥45 min, o el cliente muere con el job vivo en fal (rescatable por `request_id`).
@@ -51,7 +51,7 @@ Parámetros: `num_frames = floor(duración_audio × 25) − 2` · `resolution: 7
 
 ## Folklore de comunidad
 
-- WaveSpeed lo sirve ~10× más barato ($0.03–0.06/s) — `sin verificar` (precios secundarios 2026-08-13); si el volumen crece, medir ahí antes de asumir.
+- WaveSpeed lo sirve ~10× más barato (<costo interno>–0.06/s) — `sin verificar` (precios secundarios 2026-08-13); si el volumen crece, medir ahí antes de asumir.
 - "Hasta 10 min por clip" — es de la variante/serving largo de WaveSpeed, NO del endpoint fal (tope 721 frames) — no confundir capa.
 - Emparejar la energía del prompt con la del audio y añadir `micro-expressions, subtle head turns` si la cara sale rígida — `anecdótico` (blogs de comunidad; ojo: varios son los clones SEO del punto de Identidad).
 
@@ -61,5 +61,5 @@ La voz no se itera aquí (es input). Iterar = cambiar imagen de entrada (pose, e
 
 ## Historial
 
-- 2026-08-13 — alta de la ficha (torneo Foliatti R1; runner operativo en el motor de video interno).
-- 2026-08-14 — **status → descartado-colek** tras la prueba justa del torneo (ver encabezado). Consolidada con la ficha hermana `ficha-infinitalk.md` (slug de fal) en este único archivo.
+- 2026-08-13 — alta de la ficha (torneo un cliente de entretenimiento R1; runner operativo en el motor de video interno).
+- 2026-08-14 — **status → descartado-el estudio** tras la prueba justa del torneo (ver encabezado). Consolidada con la ficha hermana `ficha-infinitalk.md` (slug de fal) en este único archivo.

@@ -15,7 +15,7 @@ Higgsfield NO es un modelo: es un **agregador multi-modelo** (15+ bajo una suscr
 > **Versiones dentro del agregador ≠ versiones de API.** Regla general: **verificar la versión
 > visible en la UI antes de usar rasgos exclusivos de una versión** — el agregador puede ir detrás
 > de las APIs. *(Corrección 2026-08-13: la UI y el MCP ya sirven **Seedance 2.5** — verificado en la
-> cuenta de Adrian, torneo Foliatti; una versión anterior de esta ficha decía que solo había 2.0.)*
+> cuenta de el director, torneo un cliente de entretenimiento; una versión anterior de esta ficha decía que solo había 2.0.)*
 
 ## MCP (verificado en cuenta propia, 2026-08-13)
 
@@ -30,7 +30,7 @@ Higgsfield NO es un modelo: es un **agregador multi-modelo** (15+ bajo una suscr
 - **Lo que el MCP NO expone** (a 2026-08): el **Lip-Sync Studio** (Speak v2, InfiniteTalk, lipsync-2)
   — solo generadores de imagen/video/audio TTS. Lipsync audio-driven → por fal.
 - **Costo medido:** Kling 3.0 std 15 s con audio = 30 créditos (~2 cr/s); el $/crédito depende del
-  plan (pack top-up ≈ $0.0525/cr). El gasto NO deja rastro en ledgers propios — registrarlo a mano.
+  plan (pack top-up ≈ <costo interno>/cr). El gasto NO deja rastro en ledgers propios — registrarlo a mano.
 
 ## Gramática oficial (reglas de plataforma)
 
@@ -82,4 +82,5 @@ Reglas de oficio adaptadas de `github.com/OSideMedia/higgsfield-ai-prompt-skill`
 
 ## Historial
 
+- 2026-08-28 — **verificado en producción (teaser Conquistando):** el Seedance 2.5 de Higgsfield ACEPTA rostros fotorrealistas que el mismo Seedance en fal rechaza (`partner_validation_failed`) — Higgsfield es plan B válido cuando fal bloquea por likeness, además del Kling de fal. Detalles de la ruta MCP: `start_image` exige `mode: "omni_reference"`, y `get_cost` cotiza POR TOMA (con `count: 2` el cargo real es el doble de lo cotizado — medido contra `balance`: 5 s = 32.5 cr/toma, 6 s = 39 cr/toma). El push de presets sigue vivo (ofreció "IN THE DARK" 2/2 veces; `declined_preset_id` funciona).
 - 2026-08-13 — alta de la ficha (plataforma con Cinema Studio 3.5; Seedance 2.0/Kling 3.0/Veo 3.1 como motores de video).

@@ -2,7 +2,9 @@
 
 Repositorio de **distribución** de las skills de prompting y visuales de Colek para editores y colaboradores. Aquí viven las **ediciones portables** (autocontenidas, sin dependencias del ecosistema interno de Colek).
 
-> ⚠️ **Este repo no se edita a mano.** La fuente canónica vive en el workspace de Colek; `build.ps1` regenera `skills\` desde ahí. Mejoras y correcciones → avisar a Adrian.
+> ⚠️ **Este repo no se edita a mano.** La fuente canónica vive en el workspace del estudio; `build.ps1` regenera `skills\` desde ahí. Mejoras y correcciones → avisar al director.
+
+> 🔒 **Todo lo que se publica aquí pasa por `sanitizar.py`.** Este repo es público, y las fichas canónicas contienen mediciones hechas sobre proyectos reales: nombres de cliente, rutas del Drive interno y costos por clip. El sanitizado sustituye cada nombre propio por su categoría —"la plantilla sellada de OBO" pasa a "la plantilla sellada de una serie de sketches"—, borra rutas y costos por su forma, y después **verifica**: si algún término interno sobrevive, el build **se detiene** y no publica nada. Arnés: `python tests_sanitizar.py`.
 
 ## Skills incluidas
 

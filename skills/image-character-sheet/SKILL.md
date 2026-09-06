@@ -4,9 +4,9 @@ description: Generar CHARACTER SHEETS (hojas de referencia de personaje multi-vi
 tags: [sop, imagen]
 ---
 
-# image-character-sheet — hojas de referencia de personaje con IA (edición portable Colek)
+# image-character-sheet — hojas de referencia de personaje con IA (edición portable el estudio)
 
-> **Edición portable v2026-08-13 — distribuida por el repo `colek-skills`. NO editar estos archivos a mano: cualquier cambio se pierde en la siguiente actualización. Mejoras y correcciones → avisar a Adrian.**
+> **Edición portable v2026-08-13 — distribuida por el repo `el estudio-skills`. NO editar estos archivos a mano: cualquier cambio se pierde en la siguiente actualización. Mejoras y correcciones → avisar a el director.**
 
 Convierte un brief de personaje en **prompts de character sheet listos por plataforma** — uno para **GPT Image 2** (ChatGPT) y uno para **Nano Banana** (Gemini) — desde **una misma ficha canónica**.
 
@@ -19,7 +19,7 @@ Convierte un brief de personaje en **prompts de character sheet listos por plata
 3. **Composición.** Default = **grid completo**: fila 1 full-body FRONT/SIDE/BACK, fila 2 FRONT CLOSE-UP + TOP-DOWN VIEW, franja inferior DETAIL SWATCHES con labels. Alternativas: turnaround simple (3-5 vistas en fila), expression sheet, wardrobe variants. **Una sheet por propósito** — turnaround y expresiones nunca en la misma imagen (figuras chicas + layout roto).
 4. **Ficha canónica de slots** (escrita UNA sola vez, en inglés):
    `IDENTIDAD (edad + piel/etnia) → CARA (forma, mandíbula, pómulos, nariz, labios) → OJOS → CEJAS → PELO (color, largo, estilo, finish) → CUERPO → WARDROBE head-to-toe (top → capas → bottom → cinturón → zapatos → accesorios, con material + color + un detalle por prenda)`.
-   Especificidad gana a adjetivos: "vibrant purple button-front vest with black RICKY name tag" ≫ "nice vest". Sin huecos en el wardrobe (la espalda inventa lo que no declaraste).
+   Especificidad gana a adjetivos: "vibrant purple button-front vest with black un personaje recurrente name tag" ≫ "nice vest". Sin huecos en el wardrobe (la espalda inventa lo que no declaraste).
 5. **Emitir los dos prompts** llenando las plantillas de `references\` (o solo el de la plataforma que el usuario va a usar). Entregar en bloques de código copy-paste, con tamaño/ratio recomendado al pie.
 
 ## Reglas anti-deriva (lo que más se rompe)

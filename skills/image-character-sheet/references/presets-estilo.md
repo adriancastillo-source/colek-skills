@@ -1,6 +1,6 @@
 # Presets de estilo — módulos Render + Lighting + Quality tail
 
-Cada preset llena el slot STYLE (GPT) o el módulo de estilo final (Nano Banana). **No hay preset default: siempre se pregunta a Adrian** (referencia visual, descripción libre, o uno de estos). Con referencia/descripción libre, construir un módulo custom con esta misma forma de tres partes.
+Cada preset llena el slot STYLE (GPT) o el módulo de estilo final (Nano Banana). **No hay preset default: siempre se pregunta a el director** (referencia visual, descripción libre, o uno de estos). Con referencia/descripción libre, construir un módulo custom con esta misma forma de tres partes.
 
 ## 1. `fotorreal-anti-retoque`
 - **Render:** `visible fine skin texture with natural pores, fine lines, subtle asymmetries, natural visible makeup with slightly uneven blending, slight natural sheen, matte-to-natural complexion, no digital smoothing, no beauty filter, no AI-airbrushed look` *(en NB, voltear los "no" a: "authentic unretouched skin with visible pores and natural texture")*. Anclas de imperfección opcionales: `a few faint freckles, a small mole`.
@@ -12,7 +12,7 @@ Cada preset llena el slot STYLE (GPT) o el módulo de estilo final (Nano Banana)
 - **Lighting:** `editorial beauty lighting, soft key and gentle fill`.
 - **Quality tail:** `high-end fashion editorial photography, magazine cover quality, cinematic realism, 4K`.
 
-## 3. `3d-pixar` (el estilo de la referencia Ricky)
+## 3. `3d-pixar` (el estilo de la referencia un personaje recurrente)
 - **Render:** `stylized 3D character render, appealing exaggerated proportions, smooth subsurface-scattering skin, soft rounded features, detailed hair strands and cloth simulation`.
 - **Lighting:** `soft global illumination, three-point studio lighting, gentle rim light`.
 - **Quality tail:** `high-end 3D animation studio quality, octane-style render, clean neutral background, 4K`.

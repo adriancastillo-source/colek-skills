@@ -4,19 +4,20 @@ description: Experto en prompting de contenido generativo (imagen + video) — d
 tags: [sop, imagen, video]
 ---
 
-# media-prompting — prompts optimizados por herramienta (edición portable Colek)
+# media-prompting — prompts optimizados por herramienta (edición portable el estudio)
 
-> **Edición portable v2026-08-13 — distribuida por el repo `colek-skills`. NO editar estos archivos a mano: cualquier cambio se pierde en la siguiente actualización. Mejoras y correcciones → avisar a Adrian.**
+> **Edición portable v2026-08-13 — distribuida por el repo `el estudio-skills`. NO editar estos archivos a mano: cualquier cambio se pierde en la siguiente actualización. Mejoras y correcciones → avisar a el director.**
 
 Cada modelo de IA tiene gramática propia: un prompt escrito "en general" desperdicia (o rompe) las fortalezas del modelo que lo va a ejecutar. Esta skill produce **el prompt correcto para la herramienta concreta**, usando fichas de sintaxis por herramienta en `references\`.
 
 ## Flujo
 
 1. **¿Qué herramienta va a ejecutar el prompt?** Si el usuario no la dijo, preguntarla (en Higgsfield, preguntar también QUÉ modelo eligió en la UI: Seedance, Kling, Veo…). Si el usuario pide recomendación: video multi-shot/ads → Seedance · personajes 4K → Kling · exteriores/atmósfera → Veo · imagen con texto/labels → Nano Banana · composición instruida compleja → GPT Image.
-2. **Cargar SOLO la ficha de esa herramienta** (`references\ficha-<herramienta>.md`). En Higgsfield: la ficha de plataforma (`ficha-higgsfield.md`) + la ficha del modelo elegido.
-3. **Ficha canónica del requerimiento** (una sola vez, en inglés): sujeto, acción, contexto, estilo, restricciones (duración, ratio, texto en pantalla). **La referencia visual manda**: si el estilo importa y no hay referencia, preguntarla.
-4. **Llenar la plantilla de la ficha** respetando su gramática (orden de slots, sintaxis literal, negativos sí/no) y entregar: **prompt en bloque de código + parámetros** (ratio, duración, resolución) **+ los 2-3 gotchas relevantes** al caso.
-5. **Iterar:** UN cambio por ronda, re-afirmando los invariantes, como indique la ficha. Nunca reescribir todo el prompt para corregir un detalle.
+2. **Gate de coincidencia — verificar antes de generar.** ¿El modelo que nombró el usuario aparece **literalmente** en el frontmatter de una ficha (`herramienta` / `modelo-vigente`)? Si NO —nombre desconocido, versión mayor distinta, o el nombre solo aparece *mencionado dentro del cuerpo* de otra ficha— **detenerse y consultar la doc oficial del proveedor antes de redactar**, sobre todo **la capacidad central que el pedido da por sentada** (first/last frame, refs, duración, audio). Prohibido el puente por parecido (*"X ha de ser el nombre nuevo de Y"*): dos modelos del mismo proveedor pueden tener gramáticas opuestas y capacidades distintas. Si no se resuelve, entregar **declarando** el motor asumido y el hueco.
+3. **Cargar SOLO la ficha de esa herramienta** (`references\ficha-<herramienta>.md`). En Higgsfield: la ficha de plataforma (`ficha-higgsfield.md`) + la ficha del modelo elegido.
+4. **Ficha canónica del requerimiento** (una sola vez, en inglés): sujeto, acción, contexto, estilo, restricciones (duración, ratio, texto en pantalla). **La referencia visual manda**: si el estilo importa y no hay referencia, preguntarla.
+5. **Llenar la plantilla de la ficha** respetando su gramática (orden de slots, sintaxis literal, negativos sí/no) y entregar: **prompt en bloque de código + parámetros** (ratio, duración, resolución) **+ los 2-3 gotchas relevantes** al caso.
+6. **Iterar:** UN cambio por ronda, re-afirmando los invariantes, como indique la ficha. Nunca reescribir todo el prompt para corregir un detalle.
 
 ## Reglas duras
 
@@ -34,6 +35,6 @@ Cada modelo de IA tiene gramática propia: un prompt escrito "en general" desper
 | `ficha-seedance.md` | Seedance 2.x (ByteDance) | video |
 | `ficha-kling.md` | Kling 2.x/3 (Kuaishou) | video |
 | `ficha-veo.md` | Veo 3.x (Google) | video |
-| `ficha-infinitetalk.md` | InfiniteTalk (talking head audio-driven) — **descartado tras prueba de Colek 2026-08-14**, ver ficha | video |
+| `ficha-infinitetalk.md` | InfiniteTalk (talking head audio-driven) — **descartado tras prueba de el estudio 2026-08-14**, ver ficha | video |
 
 Para hojas de personaje multi-vista (character sheets), usar la skill hermana `image-character-sheet`.

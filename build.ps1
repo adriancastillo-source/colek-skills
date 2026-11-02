@@ -1,16 +1,40 @@
 # build.ps1 - regenera skills\ y zips\ desde la fuente canonica del workspace de Colek.
 # Uso (lado Adrian, no editores):  powershell -ExecutionPolicy Bypass -File build.ps1
 # Regla: este repo NO se edita a mano; toda correccion va a la fuente y se re-corre el build.
+#
+# Rutas (escision fase 3, H:\Mi unidad\EXIO\escision\DISENO-RUTAS.md): la fuente sale de
+# la casa de Adrian, variable de usuario EXIO_CASA_ADRIAN (+ '\skills'). Sin ella, el build
+# se detiene: nunca cae a una ruta escrita a mano.
+#   -Src      fuente de las skills (por omision: <EXIO_CASA_ADRIAN>\skills)
+#   -Destino  donde se escriben skills\ y zips\ (por omision: este repo). Las pruebas y las
+#             corridas en seco lo apuntan a una carpeta temporal para no tocar lo versionado.
+param(
+    [string]$Src = "",
+    [string]$Destino = ""
+)
 
 $ErrorActionPreference = "Stop"
-$src  = "G:\Mi unidad\CLAUDE WORKSPACE\skills"
+
+# Lector de casas (DISENO-RUTAS.md 1.3). En el cuerpo y no en param(): con
+# `powershell -File` (tarea agendada) las variables automaticas llegan vacias ahi.
+function Get-Casa([string]$Cual) {
+    $var = @{ adrian = 'EXIO_CASA_ADRIAN'; estudio = 'EXIO_CASA_ESTUDIO' }[$Cual]
+    $v = [Environment]::GetEnvironmentVariable($var)
+    if (-not $v -or -not (Test-Path -LiteralPath $v -PathType Container)) { throw "Falta $var o no existe (ver DISENO-RUTAS.md)" }
+    $v
+}
+
 $repo = Split-Path -Parent $MyInvocation.MyCommand.Path
+if (-not $Src) { $Src = Join-Path (Get-Casa adrian) 'skills' }
+if (-not $Destino) { $Destino = $repo }
+Write-Host "Fuente:  $src"
+Write-Host "Destino: $Destino"
 
 # skill => tiene edicion portable en <skill>\portable\SKILL.md; references viajan tal cual
 $skills = @("media-prompting", "image-character-sheet")
 
 foreach ($s in $skills) {
-    $dst = Join-Path $repo "skills\$s"
+    $dst = Join-Path $Destino "skills\$s"
     if (Test-Path $dst) { Remove-Item -Recurse -Force $dst }
     New-Item -ItemType Directory -Force (Join-Path $dst "references") | Out-Null
 
@@ -43,13 +67,13 @@ foreach ($s in $skills) {
     # ZIP para usuarios de claude.ai (carpeta de la skill en la raiz del zip).
     # tar de Windows (bsdtar) y no Compress-Archive: PS 5.1 mete backslashes en los
     # entry names y los extractores POSIX (claude.ai) extraen plano.
-    $zipdir = Join-Path $repo "zips"
+    $zipdir = Join-Path $Destino "zips"
     New-Item -ItemType Directory -Force $zipdir | Out-Null
     $zip = Join-Path $zipdir "$s.zip"
     if (Test-Path $zip) { Remove-Item -Force $zip }
-    tar -a -c -f $zip -C (Join-Path $repo "skills") $s
+    tar -a -c -f $zip -C (Join-Path $Destino "skills") $s
     if ($LASTEXITCODE -ne 0) { throw "tar fallo para $s" }
 }
 
-Write-Host "Build OK: $($skills.Count) skills regeneradas en skills\ y zips\"
+Write-Host "Build OK: $($skills.Count) skills regeneradas en $Destino (skills\ y zips\)"
 Write-Host "Siguiente paso: git add -A; git commit; git push"

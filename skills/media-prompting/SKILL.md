@@ -32,6 +32,8 @@ Cada modelo de IA tiene gramática propia: un prompt escrito "en general" desper
 | `ficha-gpt-image.md` | GPT Image 2 (OpenAI / ChatGPT) | imagen |
 | `ficha-nano-banana.md` | Nano Banana / Gemini (Google) | imagen |
 | `ficha-higgsfield.md` | Higgsfield (plataforma) | video |
+| `ficha-genjutsu.md` | Higgsfield Genjutsu (video-a-video: Motion Transfer, Object Swap, Styles) | video |
+| `ficha-soul-cinema.md` | Higgsfield Soul Cinema (imagen cinematográfica) | imagen |
 | `ficha-seedance.md` | Seedance 2.x (ByteDance) | video |
 | `ficha-kling.md` | Kling 2.x/3 (Kuaishou) | video |
 | `ficha-veo.md` | Veo 3.x (Google) | video |

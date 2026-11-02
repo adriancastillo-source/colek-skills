@@ -38,6 +38,12 @@ ok("FMF" not in t and "federacion deportiva" in t, "una federacion no se nombra"
 print("2. respeta los limites de palabra (no destroza palabras que contienen el termino)")
 ok("OBOE" in sanitizar.sanitizar_texto("Un OBOE suena grave."), "'OBOE' no se parte por contener OBO")
 ok("colaborar" in sanitizar.sanitizar_texto("Vamos a colaborar."), "'colaborar' sobrevive pese a 'Colek'")
+t = sanitizar.sanitizar_texto("Corrido a mano en Lotería Fanta, MARK y CDF Tapipesos; voz de Alan en Canales al 100.")
+ok(sanitizar.revisar(t) == [] and "MARK" not in t, f"los nombres que se colaron el 2026-11-02 se sustituyen (dio {t!r})")
+ok("watermark" in sanitizar.sanitizar_texto("no watermark, mark the edges"), "'mark' suelto no se toca: MARK solo va en frase")
+t = sanitizar.sanitizar_texto("Medido en la prueba MARK 2026 (David en ingles) y en Lotería Fanta.")
+ok(sanitizar.revisar(t) == [] and "MARK" not in t and "Lotería una" not in t, f"MARK 2026, David y Lotería Fanta se sustituyen en frase (dio {t!r})")
+ok("Coleko" not in sanitizar.sanitizar_texto("la mascota Coleko"), "'Coleko' se cubre aunque contenga 'Colek'")
 
 print("3. limpia por FORMA lo que la lista no enumera")
 t = sanitizar.sanitizar_texto("Los clips estan en G:\\Unidades compartidas\\NUEVOCLIENTE\\AVE\\ y costo $0.90 por clip.")

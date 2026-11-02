@@ -47,7 +47,23 @@ SUSTITUCIONES = {
     "Colek Academy": "un curso interno",
     "Colek Studios": "el estudio",
     "Colek": "el estudio",
+    "Fanta": "una marca de refrescos",
+    "Bokaditas": "un producto",
+    "Coleko": "un agente interno",
     # series y proyectos
+    # (2026-11-02: un build tras tres semanas dejo pasar estos; "MARK" va solo en
+    # frase porque suelto atraparia la palabra inglesa "mark")
+    "Canales al 100": "una serie de capacitacion",
+    "MDS": "una serie de capacitacion",
+    "MARK y CDF Tapipesos": "otros dos proyectos",
+    "MARK 2026": "de avatar en ingles",
+    "Lotería Fanta": "una promocion de refrescos",
+    "Loteria Fanta": "una promocion de refrescos",
+    "CDF Tapipesos": "un proyecto de avatar",
+    "Tapipesos": "un proyecto de avatar",
+    "CDF": "un cliente de bebidas",
+    "HKN Awards": "un video de premiacion",
+    "HKN": "un cliente de bebidas",
     "Tlachi": "una mascota 3D",
     "OBO": "una serie de sketches",
     "Calculus Conquistadores": "un curso de ventas",
@@ -64,6 +80,9 @@ SUSTITUCIONES = {
     "Alicia": "una conductora",
     "Yeti": "un personaje recurrente",
     "Juli Planta": "un avatar",
+    "Alan": "un personaje recurrente",
+    "Alex": "un conductor",
+    "David": "otro conductor",
     # personas
     "Adrian": "el director",
     "Adrián": "el director",

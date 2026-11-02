@@ -63,6 +63,13 @@ Style: [estilo visual, grade]. No subtitles. [No BGM / (music: …)]. Do not gen
 - **`@Audio` como referencia RE-ACTÚA, no sincroniza** (medido con envolvente: r=0.32 vs r>0.7 de
   passthrough): toma el texto y aproxima el timbre, pero re-genera fraseo y pausas. Sirve para fijar
   QUÉ dice; NO para fijar la voz de un personaje de serie. — `reproducible`.
+- **El silencio inicial del `@Audio` se lo brinca** (2.5 vía Higgsfield, un cliente de bebidas un personaje recurrente 2026-10-19): con
+  0.94 s de silencio al inicio, la voz generada arrancó ~1.1 s antes que el audio («and» a 3.48–3.62 s
+  contra 4.70 s), y una acción atada a una palabra («palmaditas en "the innovation"») quedó fuera de
+  sincronía con el master. Recortando el silencio a 0.24 s, «and» cayó a 4.08 s contra 4.00 s del audio.
+  Si una acción va sincronizada a una palabra, entregar el audio casi sin silencio inicial y citar el
+  segundo de la palabra en el prompt. Medido con faster-whisper `small.en` sobre 6 borradores. — `medido`.
+- **Mete la cámara aunque se pida "mostly locked-off" con "subtle handheld"** (2.5 vía Higgsfield, prueba de avatar en ingles, 2026-10-29): en 28 s el un personaje recurrente pasó de americano abierto a plano medio y el logo del fondo salió de cuadro. Con la misma redacción pero "very gentle push-in", otro conductor conservó el encuadre. Si el fondo tiene que verse todo el tiempo, pedir "static locked-off camera, no push-in, keep the logo in frame". Costo medido: 196 créditos por 28 s a 720p.
 - **Precio real en fal** (`bytedance/seedance-2.5/reference-to-video`, 720p/16:9): **<costo interno>** por
   delta de saldo — 54% arriba del precio de 2.0 std. — `medido`.
 

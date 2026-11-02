@@ -3,7 +3,7 @@ herramienta: Kling (Kuaishou)
 modelo-vigente: Kling 3.0 / 3.0 Omni (anunciados 2026-02-05); línea 2.x vigente para t2v/i2v simple
 dominio: video
 updated: 2026-08-13
-status: vigente
+status: stale
 ---
 
 # Ficha: Kling 2.x / 3.0
@@ -18,7 +18,7 @@ Fuentes: kling.ai/quickstart/text-to-video-prompt-guide (fórmula 2.x) + kling.a
 
 - **Fórmula 2.x:** `Subject (descripción) + Subject Movement + Scene (descripción) + (Camera Language + Lighting + Atmosphere)` — los 3 primeros obligatorios. **Image-to-video:** solo `Subject + Movement, Background + Movement` (la imagen ya aporta apariencia; describir SOLO lo que se mueve).
 - **Marco 3.0 (blog oficial):** 6 elementos — Subject · Action · Scene · Camera Language · Lighting · Mood. Cita oficial: "Strong cinematic prompts are built from clear scene direction rather than secret formulas."
-- **Multi-shot 3.0 Omni:** `Shot [n] ([duración]s): [framing/angle], [contenido], [movimiento de cámara]` — ej. oficial: `"Shot 1 (3s): Mid-shot, background @Image. @Grace sits on the sofa eating cookies as @Alan walks in."` Alterno por timestamps `[00:00 - 00:02] … Audio: …`.
+- **Multi-shot 3.0 Omni:** `Shot [n] ([duración]s): [framing/angle], [contenido], [movimiento de cámara]` — ej. oficial: `"Shot 1 (3s): Mid-shot, background @Image. @Grace sits on the sofa eating cookies as @un personaje recurrente walks in."` Alterno por timestamps `[00:00 - 00:02] … Audio: …`.
 - **Elements/referencias (3.0):** menciones `@Nombre` (`@Grace`, `@Image`). Hasta 7 imágenes (≥300 px, ≤10 MB) — o hasta 4 si además hay video de referencia (1 video de 3-10 s, ≤200 MB).
 - **Diálogo (solo 3.0 Omni):** inline con comillas — `@Grace says, "Hey! Watch your dog!"`. Entiende shot-reverse-shot, cross-cutting, voice-over. **Audio/SFX:** línea `Audio:` propia.
 - **Voice binding (3.0 Omni):** audio de 5-30 s de UNA persona (fondo limpio) o video de 3-8 s del personaje (extrae apariencia + voz).

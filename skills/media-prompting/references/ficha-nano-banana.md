@@ -3,7 +3,7 @@ herramienta: Nano Banana (Google Gemini imagen)
 modelo-vigente: Nano Banana Pro (gemini-3-pro-image) / Nano Banana 2 (gemini-3.1-flash-image)
 dominio: imagen
 updated: 2026-08-13
-status: vigente
+status: stale
 ---
 
 # Ficha: Nano Banana (Gemini)
@@ -45,6 +45,8 @@ Using the attached image as the exact [character/product/style] reference, keep 
 - Manos derivan tras ~5 ediciones consecutivas → regenerar el ancla.
 - Outfits se reinterpretan en planos alejados; escenas grupales mezclan rasgos entre personajes (guías de consistencia 2026).
 - Texto sobre props pequeños del sujeto sigue siendo el punto débil (mejorado en NB2).
+- **MEDIDO: las ediciones encadenadas acumulan rojo.** Cada edición sobre una salida ya editada sube el tono rojo de la piel. Caso real: keyframe de un personaje 3D, tres ediciones seguidas; el rojo medio de la cara pasó de 142.8 a 148.9 y luego a 154.0, y el verde bajó de 104.6 a 100.1. El revisor lo vio como «rojísimo». Regla: editar siempre desde el original. Para cambiar una sola parte (un producto en la mano), se edita esa parte y se **fusiona por código** sobre la versión buena, igualando el color del parche. Lo mismo pasa con GPT Image.
+- **La calidad del producto copiado depende de la referencia.** Una bolsa copiada de una imagen donde ya salía borrosa sale barrida. Con el SKU oficial nítido como referencia sale legible, aunque la letra chica del pie sigue deformada.
 
 ## Folklore de comunidad
 
@@ -59,3 +61,4 @@ Conversacional por turnos: cada refinamiento declara qué se conserva ("keep eve
 ## Historial
 
 - 2026-08-13 — alta de la ficha (NB Pro / NB2).
+- 2026-10-07 — dos gotchas medidos en §Gotchas (keyframe de un conductor con un producto, una serie de capacitacion EP1): el rojo que se acumula en ediciones encadenadas, con el remedio de fusionar por código, y que la nitidez del producto copiado depende de la referencia.

@@ -10,7 +10,7 @@ status: vigente
 
 ## Identidad
 
-Higgsfield NO es un modelo: es un **agregador multi-modelo** (15+ bajo una suscripción) con capa propia de producto (presets de cámara, Cinema Studio, Soul ID, Popcorn) y modelo propio solo en imagen (Soul 2.0). **Consecuencia rectora: la sintaxis del prompt es la del MODELO subyacente elegido** — usar la ficha de ese modelo (`ficha-seedance.md`, `ficha-kling.md`, `ficha-veo.md`) para redactar, y ESTA ficha para las reglas de la plataforma. Elegirlo cuando se trabaja en su UI (el caso de los editores); no aplica si se llama al modelo por API directa.
+Higgsfield NO es un modelo: es un **agregador multi-modelo** (15+ bajo una suscripción) con capa propia de producto (presets de cámara, Cinema Studio, Soul ID, Popcorn) y modelos propios: Soul 2.0 y Soul Cinema en imagen (`ficha-soul-cinema.md`), y la familia Genjutsu de flujos de video (`ficha-genjutsu.md`). **Consecuencia rectora: la sintaxis del prompt es la del MODELO subyacente elegido** — usar la ficha de ese modelo (`ficha-seedance.md`, `ficha-kling.md`, `ficha-veo.md`) para redactar, y ESTA ficha para las reglas de la plataforma. Elegirlo cuando se trabaja en su UI (el caso de los editores); no aplica si se llama al modelo por API directa.
 
 > **Versiones dentro del agregador ≠ versiones de API.** Regla general: **verificar la versión
 > visible en la UI antes de usar rasgos exclusivos de una versión** — el agregador puede ir detrás
@@ -84,3 +84,4 @@ Reglas de oficio adaptadas de `github.com/OSideMedia/higgsfield-ai-prompt-skill`
 
 - 2026-08-28 — **verificado en producción (teaser Conquistando):** el Seedance 2.5 de Higgsfield ACEPTA rostros fotorrealistas que el mismo Seedance en fal rechaza (`partner_validation_failed`) — Higgsfield es plan B válido cuando fal bloquea por likeness, además del Kling de fal. Detalles de la ruta MCP: `start_image` exige `mode: "omni_reference"`, y `get_cost` cotiza POR TOMA (con `count: 2` el cargo real es el doble de lo cotizado — medido contra `balance`: 5 s = 32.5 cr/toma, 6 s = 39 cr/toma). El push de presets sigue vivo (ofreció "IN THE DARK" 2/2 veces; `declined_preset_id` funciona).
 - 2026-08-13 — alta de la ficha (plataforma con Cinema Studio 3.5; Seedance 2.0/Kling 3.0/Veo 3.1 como motores de video).
+- 2026-10-15 — §Identidad: «modelo propio solo en imagen (Soul 2.0)» quedó viejo; se agregan Soul Cinema y Genjutsu con sus fichas nuevas (sesión un video de premiacion un personaje recurrente, post).
